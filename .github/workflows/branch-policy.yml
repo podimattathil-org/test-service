@@ -1,0 +1,20 @@
+name: Branch Policy Check
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-branch:
+
+    uses: podimattathil-org/org-governance/.github/workflows/validate-branch-name.yml@main
+
+    secrets:
+      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
